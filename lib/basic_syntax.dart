@@ -1,3 +1,5 @@
-void main(){
-  student = [1, 2];
+void main() {
+  int? a;
+  print(a);
+
 }

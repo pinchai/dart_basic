@@ -1,19 +1,4 @@
----
-title: Dart
-date: 2021-11-04 10:12:25
-background: bg-[#58aee9]
-tags:
-  - dart
-  - flutter
-categories:
-  - Programming
-intro: |
-  A Dart cheat sheet with the most important concepts, functions, methods, and more. A complete quick reference for beginners.
-plugins:
-  - copyCode
----
-
-## Getting Started {.cols-2}
+## Getting Started
 
 ### hello.dart
 
@@ -29,17 +14,15 @@ Every app has a main() function
 ### Variables
 
 ```dart
-int x = 2; // explicitly typed
-var p = 5; // type inferred - Generic var with type inference
+int x = 2; 
+
+var p = 5;
 
 dynamic z = 8; // variable can take on any type
+
 z = "cool"; // cool
 
-// if you never intend to change a variable use final or const. Something like this:
-
 final email = "temid@gmail.com"; // Same as var but cannot be reassigned
-final String email = "temid@gmail.com"; // you can't change the value
-
 const qty = 5; // Compile-time constant
 ```
 
@@ -113,7 +96,7 @@ import 'package:test/test.dart';
 import 'path/to/my_other_file.dart';
 ```
 
-## Operators {.cols-2}
+## Operators
 
 ### Arithmatic Operators
 
@@ -124,16 +107,6 @@ print(2 * 3); //Print: 6
 print(5 / 2);  //Print: 2.5 - Result is a double
 print(5 ~/ 2); //Print: 2 - Result is an int
 print(5 % 2); //Print: 1 - Remainder
-
-int a = 1, b;
-// Increment
-b = ++a; // preIncrement - Increment a before b gets its value.
-b = a++; // postIncrement - Increment a AFTER b gets its value.
-
-//Decrement
-b = --a; // predecrement - Decrement a before b gets its value.
-b = a--; // postdecrement - Decrement a AFTER b gets its value.
-```
 
 ### Equality and relational operators
 
@@ -159,7 +132,7 @@ if (!isOutOfStock && (quantity == 2 || quantity == 3)) {
 }
 ```
 
-## Control Flows : Conditionals {.cols-2}
+## Control Flows : Conditionals
 
 ### if and else if
 
@@ -171,24 +144,6 @@ if(age < 18){
 } else {
     print("Old");
 }
-```
-
-### switch case
-
-```dart
-enum Pet {dog, cat}
-Pet myPet = Pet.dog;
-switch(myPet){
-    case Pet.dog:
-        print('My Pet is Dog.');
-        break;
-    case Pet.cat:
-        print('My Pet is Cat.');
-        break;
-    default:
-        print('I don\'t have a Pet');
-}
-// Prints: My Pet is Dog.
 ```
 
 ## Control Flows : Loops
@@ -249,7 +204,7 @@ for(var number in numbers){
 ```
 
 
-## Collections {.cols-2}
+## Collections
 
 ### Lists
 
@@ -272,7 +227,8 @@ const constantCities = const ["New York", "Mumbai", "Tokyo"];
 
 ```dart
 // A set in Dart is an unordered collection of unique items.
-var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+Set contry = {"New York", "Mumbai", "Tokyo", "New York", "Mumbai", "Tokyo"};
+print(contry);
 
 // to create an empty set
 var names = <String>{};
@@ -301,7 +257,7 @@ var nobleGases = {
 };
 ```
 
-## Functions {.cols-2}
+## Functions
 
 ### Functions
 
@@ -316,26 +272,6 @@ int sum = add(2,3); // returns: 5
 
 // can be passed as arguments to other functions
 int totalSum = add(2, add(2,3)); // returns : 7
-```
-
-### Arrow Syntax (=>)
-
-```dart
-// functions that contain just one expression, you can use a shorthand syntax
-bool isFav(Product product) => favProductsList.contains(product);
-```
-
-### Anonymous (lambda) functions
-
-```dart
-// small one line functions that dont have name
-int add(a,b) => a+b;
-
-// lambda functions mostly passed as parameter to other functions
-const list = ['apples', 'bananas', 'oranges'];
-list.forEach(
-(item) => print('${list.indexOf(item)}: $item'));
-//Prints: 0: apples 1: bananas 2: oranges
 ```
 
 ## Classes and Objects
@@ -617,88 +553,6 @@ print(null ?? 10); // Prints: 10. Display the value on the left if it's not null
 ### Ternary Operator
 
 ```dart
-// condition ? exprIfTrue : exprIfFalse
-bool isAvailable;
-
-isAvailable ? orderproduct() : addToFavourite();
+int a = 1;
+a == 10 ? print('==') : print('!=');
 ```
-
-### Spread Operator (...)
-
-```dart
-// to insert multiple values into a collection.
-var list = [1, 2, 3];
-var list2 = [0, ...list];
-
-print(list2.length); //Print: 4
-```
-
-### Cascade notation (..)
-
-```dart
-// allows you to make a sequence of operations on the same object
-
-// rather than doing this
-var user = User();
-user.name = "Nicola";
-user.email = "nicola@g.c";
-user.age = 24;
-
-// you can do this
-var user = User()
-  ..name = "Nicola"
-  ..email = "nicola@g.c"
-  ..age = 24;
-```
-
-### Conditional Property Access
-
-```dart
-userObject?.userName
-
-//The code snippet above is equivalent to following:
-(userObject != null) ? userObject.userName : null
-
-//You can chain multiple uses of ?. together in a single expression
-userObject?.userName?.toString()
-
-// The preceeding code returns null and never calls toString() if either userObject or userObject.userName is null
-```
-### enum in dart
-```dart
-defination: An enum (short for "enumeration") is a special data type that enables a variable to be a set of predefined constants. Enums are used to define variables that can only take one out of a small set of possible values. They help make code more readable and less error-prone by providing meaningful names to these sets of values.
-
-// Define the enum
-enum TrafficLight {
-  red,
-  yellow,
-  green
-}
-
-// A function that prints a message based on the traffic light state
-void printTrafficLightMessage(TrafficLight light) {
-  switch (light) {
-    case TrafficLight.red:
-      print('Stop!');
-      break;
-    case TrafficLight.yellow:
-      print('Get ready...');
-      break;
-    case TrafficLight.green:
-      print('Go!');
-      break;
-  }
-}
-
-void main() {
-  // Example usage of the enum
-  TrafficLight currentLight = TrafficLight.green;
-
-  // Print the message for the current traffic light state
-  printTrafficLightMessage(currentLight);
-}
-
-
-```
-
-
